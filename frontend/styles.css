@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+
+body, html {
+    font-size: 150%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    
+    background-size: cover;
+    color: #000000;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px;
+}
+
+header h1 {
+    font-size: 5rem;
+    text-align: center;
+    position: relative;
+}
+
+header h1:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #FF0000;
+    animation: revealText 2s forwards;
+    animation: revealText 2s forwards 3s;
+}
+
+.logo-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 253, 253, 0.444);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes revealText {
+    100% { width: 100%; }
+}
+
+/* Prodos Animation */
+@keyframes showTopText {
+  0% { transform: translate3d(0, 100%, 0); }
+  40%, 60% { transform: translate3d(0, 50%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+@keyframes showBottomText {
+  0% { transform: translate3d(0, -100%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+.animated-title {
+  color: #222;
+  font-family: Roboto, Arial, sans-serif;
+  height: 90vmin;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vmin;
+}
+.animated-title > div {
+  height: 50%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+}
+.animated-title > div div {
+  font-size: 12vmin;
+  padding: 2vmin 0;
+  position: absolute;
+}
+.animated-title > div div span {
+  display: block;
+}
+.animated-title > div.text-top {
+  border-bottom: 1vmin solid #000;
+  top: 0;
+}
+.animated-title > div.text-top div {
+  animation: showTopText 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  bottom: 0;
+  transform: translate(0, 100%);
+}
+.animated-title > div.text-top div span:first-child {
+  color: #767676;
+}
+.animated-title > div.text-bottom {
+  bottom: 0;
+}
+.animated-title > div.text-bottom div {
+  animation: showBottomText 0.5s;
+  animation-delay: 1.75s;
+  animation-fill-mode: forwards;
+  top: 0;
+  transform: translate(0, -100%);
+}
+
+/* End of Prodos Animation */
+
+main p {
+    font-size: 1.5rem;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-container img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.search-container input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 1.2rem;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.search-container button {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    background-color: #FF0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+}
+
+.search-container button:active {
+    transform: scale(0.95);
+}
+
+.how-to-use-section, .developers-section {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: rgba(171, 61, 61, 0.482);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(173, 24, 24, 0.956);
+}
+
+.how-to-use-section h2, .developers-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.how-to-use-section p {
+    font-size: 1.2rem;
+    text-align: justify;
+}
+
+.developers-section .developer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.developers-section p {
+    font-size: 1.3rem;
+    flex: 2;
+}
+
+.developer img {
+    width: 100px;
+    height: 100px;
+    border-radius: 0;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.developers-section img:hover {
+    transform: scale(1.1);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #FF0000;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.432);
+}
+
+.search-section {
+    opacity: 0;
+    animation-name: fadeInOpacity;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    margin-top: 50px;
+    text-align: center;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.how-to-use-section ul {
+    list-style-type: disc;
+}
+
+/* ... [rest of your existing CSS] ... */
+
+/* Prodos Background Animation */
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.prodos-section {
+    position: relative;
+    background: linear-gradient(270deg, #ff5e62, #ffffff);
+    background-size: 200% 200%;
+    animation: Gradient 10s ease infinite;
+    margin-top: 50px; /* Align it with the rest of your sections */
+    padding: 20px; /* Added padding for aesthetics */
+}
+
+.translucent-box {
+    background-color: rgba(255, 255, 255, 0.5); /* Translucent effect */
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section {
+    padding: 20px;
+    background-color: #c427277d;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.382), 0 2px 4px rgba(187, 7, 7, 0.508);
+    width: fit-content;
+}
+
+.contact-section h2 {
+    margin-top: 0;
+}
+
+.contact-section p {
+    margin-bottom: 0;
+}
+
+.loading-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8); /* Change as desired */
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* To ensure it appears above all other content */
+}
+
+.loading-scene p {
+    color: white;
+    font-size: 24px;
+}
+
+.spinner {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+  

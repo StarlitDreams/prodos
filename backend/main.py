@@ -27,5 +27,16 @@ def get_channel_statistics(youtube,channel_id):
             )
     return response
      
-get_channel_statistics(youtube,channel_id)
-    
+channel_statistics = get_channel_statistics(youtube,channel_id)
+
+#integrating into pandas dataframe
+channel_data = pd.DataFrame.from_dict(channel_statistics)
+
+#setting the correct data types for each column
+channel_data['Subscribers'] = pd.to_numeric(channel_data['Subscribers'])
+channel_data['Views'] = pd.to_numeric(channel_data['Views'])
+channel_data['Total_Videos'] = pd.to_numeric(channel_data['Total_Videos'])
+
+
+
+

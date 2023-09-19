@@ -27,7 +27,8 @@ def get_channel_statistics(youtube, channel_id):
         Views=response['items'][0]['statistics']['viewCount'],
         Total_Videos=response['items'][0]['statistics']['videoCount'],
         description=response['items'][0]['snippet']['description'],
-        country=response['items'][0]['snippet']['country']
+        country=response['items'][0]['snippet']['country'],
+        playlist_id=response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
     )
     return data
      
@@ -44,7 +45,33 @@ channel_data['Subscribers'] = pd.to_numeric(channel_data['Subscribers'])
 channel_data['Views'] = pd.to_numeric(channel_data['Views'])
 channel_data['Total_Videos'] = pd.to_numeric(channel_data['Total_Videos'])
 
+print(channel_data)
+
+"""
 # Print the resulting DataFrame
 sns.set(rc={'figure.figsize':(11.7,8.27)})
 ax = sns.barplot(x='Channel_name', y='Subscribers', data=channel_data)
 plt.show()  # Display the plot
+"""
+
+#get the video ids
+def get_channel_videos(youtube, playlist_id):
+    videos = []
+    next_page_token = None
+    
+    while 1:
+        request = youtube.playlistItems().list(
+            playlistId=playlist_id,
+            part='snippet',
+            maxResults=50,
+            pageToken=next_page_token
+        )
+        
+        response = request.execute()
+        videos += response['items']
+        next_page_token = response.get('nextPageToken')
+        
+        if next_page_token is None:
+            break
+    
+    return videos

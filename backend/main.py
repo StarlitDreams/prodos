@@ -83,6 +83,35 @@ def get_channel_videos(youtube, playlist_id):
 
 
 video_ids = get_channel_videos(youtube, channel_data['playlist_id'][0])
-print(video_ids)
+
 
  
+def get_video_details(youtube, video_ids):
+    all_video_stats = []
+    for i in range(0, len(video_ids), 50):
+        request = youtube.videos().list(
+            part='snippet,contentDetails,statistics',
+            id=','.join(video_ids[i:i+50]))
+        response = request.execute() 
+        for video in response['items']:
+            video_stats = dict(
+                Title=video['snippet']['title'],
+                publishedAt=video['snippet']['publishedAt'],
+                viewCount=video['statistics'].get('viewCount', 0),
+                likeCount=video['statistics'].get('likeCount', 0),
+                dislikeCount=video['statistics'].get('dislikeCount', 0),
+                commentCount=video['statistics'].get('commentCount', 0)
+            )
+            
+            all_video_stats.append(video_stats)
+    return all_video_stats
+
+
+video_details = get_video_details(youtube,video_ids)
+video_data = pd.DataFrame(video_details)
+video_data['publishedAt'] = pd.to_datetime(video_data['publishedAt'])
+video_data['viewCount'] = pd.to_numeric(video_data['viewCount'])
+video_data['likeCount'] = pd.to_numeric(video_data['likeCount'])
+video_data['dislikeCount'] = pd.to_numeric(video_data['dislikeCount'])
+
+print(video_data)

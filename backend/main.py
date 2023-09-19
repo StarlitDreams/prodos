@@ -57,7 +57,7 @@ plt.show()  # Display the plot
 #get the video ids
 def get_channel_videos(youtube, playlist_id):
     videos = []
-    next_page_token = None
+    next_page_token = None 
     
     while 1:
         request = youtube.playlistItems().list(

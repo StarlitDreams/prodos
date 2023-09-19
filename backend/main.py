@@ -114,4 +114,18 @@ video_data['viewCount'] = pd.to_numeric(video_data['viewCount'])
 video_data['likeCount'] = pd.to_numeric(video_data['likeCount'])
 video_data['dislikeCount'] = pd.to_numeric(video_data['dislikeCount'])
 
+print("His videos: ")
 print(video_data)
+
+print("Their most viewed video: ")
+top_10 = video_data.sort_values(by='viewCount', ascending=False).head(10)
+print(top_10)
+ax1=sns.barplot(y='Title', x='viewCount', data=top_10)
+
+video_data['Month']=pd.to_datetime(video_data['publishedAt']).dt.strftime('%b') 
+videos_per_month=video_data.groupby('Month',as_index=False).size()
+sort_order=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+videos_per_month=pd.CategoricalIndex(videos_per_month['Month'],categories=sort_order,ordered=True)
+videos_per_month = videos_per_month.sort_index()
+print("Videos per month: ")
+print(videos_per_month)

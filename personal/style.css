@@ -437,3 +437,30 @@ nav .profile-details i{
     width: calc(100% - 60px);
   }
 }
+
+/* for user detail in sidebar */
+.user-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-details img.user-profile {
+  border-radius: 50%;
+  border: 5px solid #fff;
+  width: 80%;
+  height: 80%;
+}
+
+.user-details h1.user-name {
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.user-details h2.user-id {
+  color: #0ff;
+  font-size: 18px;
+  font-weight: 500;
+}

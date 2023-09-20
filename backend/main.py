@@ -45,7 +45,7 @@ channel_data['Subscribers'] = pd.to_numeric(channel_data['Subscribers'])
 channel_data['Views'] = pd.to_numeric(channel_data['Views'])
 channel_data['Total_Videos'] = pd.to_numeric(channel_data['Total_Videos'])
 
-print(channel_data)
+
 
 """
 # Print the resulting DataFrame
@@ -90,21 +90,24 @@ def get_video_details(youtube, video_ids):
     all_video_stats = []
     for i in range(0, len(video_ids), 50):
         request = youtube.videos().list(
-            part='snippet,contentDetails,statistics',
+            part='snippet,statistics',
             id=','.join(video_ids[i:i+50]))
         response = request.execute() 
-        for video in response['items']:
-            video_stats = dict(
-                Title=video['snippet']['title'],
-                publishedAt=video['snippet']['publishedAt'],
-                viewCount=video['statistics'].get('viewCount', 0),
-                likeCount=video['statistics'].get('likeCount', 0),
-                dislikeCount=video['statistics'].get('dislikeCount', 0),
-                commentCount=video['statistics'].get('commentCount', 0)
-            )
+        for video in response.get('items', []):
+            snippet = video.get('snippet', {})
+            statistics = video.get('statistics', {})
+            video_stats = {
+                'Title': snippet.get('title', ''),
+                'publishedAt': snippet.get('publishedAt', ''),
+                'viewCount': statistics.get('viewCount', 0),
+                'likeCount': statistics.get('likeCount', 0),
+                'dislikeCount': statistics.get('dislikeCount', 0),
+                'commentCount': statistics.get('commentCount', 0)
+            }
             
             all_video_stats.append(video_stats)
     return all_video_stats
+
 
 
 video_details = get_video_details(youtube,video_ids)
@@ -114,13 +117,12 @@ video_data['viewCount'] = pd.to_numeric(video_data['viewCount'])
 video_data['likeCount'] = pd.to_numeric(video_data['likeCount'])
 video_data['dislikeCount'] = pd.to_numeric(video_data['dislikeCount'])
 
-print("His videos: ")
-print(video_data)
-print("Their most viewed video: ")
+
+
 top_10 = video_data.sort_values(by='viewCount', ascending=False).head(10)
-print(top_10)
-ax1=sns.barplot(y='Title', x='viewCount', data=top_10)
-plt.show()
+
+
+
 
 video_data['Month']=pd.to_datetime(video_data['publishedAt']).dt.strftime('%b') 
 

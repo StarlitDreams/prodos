@@ -15,29 +15,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     document.getElementById('redirectToAnalytics').addEventListener('click', function() {
-        const platformSelection = document.getElementById('').value;
-        console.log("hi");
+        const platformSelection = document.getElementById('platformSelection').value;
         const userInput = document.getElementById('usernameInput').value;
-
+    
         if (!userInput) {
             alert('Please enter a username!');
             return;
         }
-
+    
         let redirectURL= "";
         switch (platformSelection) {
             case 'youtube':
                 // This is the analytics page for YouTube
                 redirectURL = "analytics.html";
                 break;
-
+    
             case 'instagram':
                 // This is the analytics page for Instagram
                 redirectURL = "instagram_analytics.html";
                 break;
         }
-
-        window.location.href = redirectURL;
+    
+        // Append the user input as a query parameter
+        window.location.href = redirectURL + "?username=" + encodeURIComponent(userInput);
     });
+    
 
 });

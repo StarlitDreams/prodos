@@ -1,9 +1,13 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const youtuberName = urlParams.get('youtuber');
-
-    if (youtuberName) {
-        const header = document.querySelector('header h1');
-        header.textContent = `${youtuberName}'s Analytics`;
+document.addEventListener('DOMContentLoaded', function() {
+    function getQueryParam(name) {
+        const url = new URL(window.location.href);
+        return url.searchParams.get(name);
     }
+
+    const youtuberName = getQueryParam("username");
+    if (youtuberName) {
+        document.getElementById("youtuberNameDisplay").textContent = "Data for: " + decodeURIComponent(youtuberName);
+    }
+
+    // The rest of your analytics related code should go below
 });

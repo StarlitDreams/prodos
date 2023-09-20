@@ -330,5 +330,36 @@ main p {
 }
 
 
+/* General styling for the dropdown */
+select {
+    background-color: #fff; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Style for YouTube option */
+.youtube-option::before {
+    content: ' '; 
+    display: inline-block;
+    width: 16px; /* Width of the icon */
+    height: 16px; /* Height of the icon */
+    margin-right: 8px; /* Space between the icon and the text */
+    background-image: url('youtube-icon.png'); 
+    background-size: cover;
+    vertical-align: middle;
+}
+
+/* Style for Instagram option */
+.instagram-option::before {
+    content: ' '; 
+    display: inline-block;
+    width: 16px; 
+    height: 16px; 
+    margin-right: 8px; 
+    background-image: url('instagram-icon.png'); 
+    background-size: cover;
+    vertical-align: middle;
+}
 
   

@@ -1,47 +1,43 @@
-// Function to simulate fetching data and redirecting to the analytics page
-function fetchData() {
-    console.log('Fetching data...');
-    const youtuberNameInput = document.querySelector('.search-container input');
-    const youtuberName = youtuberNameInput.value;
+document.addEventListener('DOMContentLoaded', function() {
 
-    if (!youtuberName.trim()) { // Check if input is empty or just whitespace
-        youtuberNameInput.value = "Error: Please type a name!";
-        youtuberNameInput.style.color = "red"; // Change text color to red for the error message
-        document.querySelector('.loading-scene').style.display = 'none'; // Hide loading screen
-        return;
-    }
+    document.getElementById('platformSelection').addEventListener('change', function() {
+        const inputField = document.getElementById('usernameInput');
 
-    console.log(`Fetching data for: ${youtuberName}`);
+        switch (this.value) {
+            case 'youtube': 
+                inputField.placeholder = "@Youtuber";
+                break;
+
+            case 'instagram':
+                inputField.placeholder = "@InstagramUser";
+                break;
+        }
+    });
     
-    // Simulate a delay for fetching data
-    setTimeout(function() {
-        // Redirect to the analytics page after the delay with the YouTuber's name as a query parameter
-        window.location.href = `analytics.html?youtuber=${encodeURIComponent(youtuberName)}`; 
-    }, 3000); // 3 seconds delay for demonstration. Adjust as needed.
-}
+    document.getElementById('redirectToAnalytics').addEventListener('click', function() {
+        const platformSelection = document.getElementById('').value;
+        console.log("hi");
+        const userInput = document.getElementById('usernameInput').value;
 
-// Function to handle the search button click
-function handleSearchClick(event) {
-    event.preventDefault(); // Prevent any default action
+        if (!userInput) {
+            alert('Please enter a username!');
+            return;
+        }
 
-    // Display the loading scene
-    document.querySelector('.loading-scene').style.display = 'flex';
+        let redirectURL= "";
+        switch (platformSelection) {
+            case 'youtube':
+                // This is the analytics page for YouTube
+                redirectURL = "analytics.html";
+                break;
 
-    // Fetch data (simulated) and then redirect
-    fetchData();
-}
+            case 'instagram':
+                // This is the analytics page for Instagram
+                redirectURL = "instagram_analytics.html";
+                break;
+        }
 
-// Event listener for the search button
-document.querySelector('.search-container button').addEventListener('click', handleSearchClick);
+        window.location.href = redirectURL;
+    });
 
-// Function to hide the logo animation after a delay
-function hideLogoAnimation() {
-    setTimeout(function() {
-        const logoAnim = document.querySelector('.logo-animation');
-        logoAnim.style.display = 'none';
-    }, 3000); // 3 seconds delay to match the CSS fadeOut animation
-}
-
-// Call the function to hide the logo animation on document load
-document.addEventListener("DOMContentLoaded", hideLogoAnimation);
-
+});

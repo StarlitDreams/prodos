@@ -1,5 +1,12 @@
 from googleapiclient.discovery import build
 import openai
+import os
+import requests
+from datetime import datetime, timedelta
+import google.oauth2.credentials
+from google.oauth2 import service_account
+
+
 def read_api_key(filename):
     with open(filename, 'r') as file:
         gpt_api_key = file.readline().strip()  
@@ -48,8 +55,13 @@ messages.append({"role": "user", "content": "The channel has " + data['Views'] +
 messages.append({"role": "user", "content": "The channel has " + data['Total_Videos'] + " videos."})
 messages.append({"role": "user", "content": "The channel is from " + data['country'] + "."})
 
+
+
+"""
+
 chat = openai.ChatCompletion.create( 
                                     model="gpt-3.5-turbo", messages=messages,temperature=0.7, max_tokens=450
         )
 reply = chat.choices[0].message.content
 print(reply)
+"""

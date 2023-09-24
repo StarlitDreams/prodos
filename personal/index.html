@@ -1,201 +1,46 @@
 <!DOCTYPE html>
+<html>
 
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title> Responsiive Admin Dashboard | CodingLab </title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+<head>
+    <link rel="stylesheet" href="index.css" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('searchButton').addEventListener('click', function() {
+                const youtuberName = document.getElementById('youtuberName').value;
+                if (youtuberName) {
+                    localStorage.setItem('youtuberName', youtuberName);
+                    window.location.href = 'analytics.html';
+                } else {
+                    alert('Please enter a YouTuber name before searching.');
+                }
+            });
+        });
+    </script>
+</head>
+
 <body>
-  <div class="sidebar">
-    <div class="logo-details">
-      <i class='bx bxl-c-plus-plus'></i>
-      <span class="logo_name">CodingLab</span>
+    <div class="container">
+    <div class="frame">
+        <div class="overlap-group">
+            <div class="rectangle"></div>
+            <div class="div"></div>
+            <div class="rectangle-2"></div>
+            <div class="rectangle-4"></div>
+            <div class="rectangle-3"></div>
+            <div class="div-2">
+                <img class="logos-youtube-icon" src="img/logos-youtube-icon.svg" />
+                <div class="div-wrapper">
+                    <input type="text" id="youtuberName" class="text-input" placeholder="Search for a Username">
+                </div>
+                <div class="div-wrapper-2" id="searchButton">
+                    <div class="text-wrapper-2">Search</div>
+                </div>
+            </div>
+        </div>
+        <img class="img-2" src="img/logo.svg" />
     </div>
-    <div class="user-details">
-        <img class="user-profile" src="./img/profile.jpeg" alt="" srcset="">
-        <h1 class="user-name nothing">Cocomelon</h1>
-        <h2 class="user-id">@cocomelon</h2>
-    </div>
-    <ul class="nav-links">
-        <li>
-          <a href="#" class="active">
-            <i class='bx bx-grid-alt' ></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        </li>
-       
-    </ul>
-  </div>
-  <section class="home-section">
-    <nav>
-      <div class="sidebar-button">
-        <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Dashboard</span>
-      </div>
-      <div class="search-box">
-        <form id="searchForm">
-            <input type="text" id="searchInput" placeholder="Search...">
-            <button type="submit"><i class='bx bx-search'></i></button>
-        </form>
     </div>
     
-      <div class="profile-details">
-        <img src="images/profile.jpg" alt="">
-        <span class="admin_name">Youtube</span>
-        <i class='bx bx-chevron-down' ></i>
-      </div>
-    </nav>
-
-    <div class="home-content">
-      <div class="overview-boxes">
-        <div class="box">
-          <div class="right-side">
-            
-            
-            <div class="indicator">
-              
-              
-            </div>
-          </div>
-          
-        </div>
-        <div class="box">
-          <div class="right-side">
-            
-            <div class="indicator">
-              
-            </div>
-          </div>
-         
-        </div>
-        <div class="box">
-          <div class="right-side">
-           
-            <div class="indicator">
-            
-            </div>
-          </div>
-          
-        </div>
-        <div class="box">
-          <div class="right-side">
-            
-            <div class="indicator">
-            
-           
-            </div>
-          </div>
-        
-        </div>
-      </div>
-
-      <div class="sales-boxes">
-        <div class="recent-sales box">
-          <div class="title">Graph or Table</div>
-          <div class="sales-details">
-            
-          <ul class="details">
-         
-          <ul class="details">
-        
-          </div>
-          
-        </div>
-        <div class="top-sales box">
-          <div class="title">Another graph or table</div>
-          <ul class="top-sales-details">
-            <li>
-            <a href="#">
-              <img src="images/sunglasses.jpg" alt="">
-              <span class="product">Vuitton Sunglasses</span>
-            </a>
-            <span class="price">$1107</span>
-          </li>
-          <li>
-            <a href="#">
-               <img src="images/jeans.jpg" alt="">
-              <span class="product">Hourglass Jeans </span>
-            </a>
-            <span class="price">$1567</span>
-          </li>
-          <li>
-            <a href="#">
-             <img src="images/nike.jpg" alt="">
-              <span class="product">Nike Sport Shoe</span>
-            </a>
-            <span class="price">$1234</span>
-          </li>
-          <li>
-            <a href="#">
-              <img src="images/scarves.jpg" alt="">
-              <span class="product">Hermes Silk Scarves.</span>
-            </a>
-            <span class="price">$2312</span>
-          </li>
-          <li>
-            <a href="#">
-              <img src="images/blueBag.jpg" alt="">
-              <span class="product">Succi Ladies Bag</span>
-            </a>
-            <span class="price">$1456</span>
-          </li>
-          <li>
-            <a href="#">
-              <img src="images/bag.jpg" alt="">
-              <span class="product">Gucci Womens's Bags</span>
-            </a>
-            <span class="price">$2345</span>
-          <li>
-            <a href="#">
-              <img src="images/addidas.jpg" alt="">
-              <span class="product">Addidas Running Shoe</span>
-            </a>
-            <span class="price">$2345</span>
-          </li>
-<li>
-            <a href="#">
-             <img src="images/shirt.jpg" alt="">
-              <span class="product">Bilack Wear's Shirt</span>
-            </a>
-            <span class="price">$1245</span>
-          </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-<script>// This function retrieves the value of a specified URL parameter
-  function getQueryParam(name) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(name);
-  }
-  
-  // Check for the 'youtuber' query parameter
-  const youtuberName = getQueryParam('youtuber');
-  if (youtuberName) {
-      // Update the user name on the page
-      document.querySelector('.user-name').textContent = youtuberName;
-  }
-  </script>
-  <script>
-
-    let sidebar = document.querySelector(".sidebar");
-	let sidebarBtn = document.querySelector(".sidebarBtn");
-    let userNameTxt = document.querySelector(".user-name");
-    let userIdTxt = document.querySelector(".user-id");
-    console.log()
-	  sidebarBtn.onclick = function() {
-	    sidebar.classList.toggle("active");
-	    if(sidebar.classList.contains("active")){
-	      sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-	    }else
-	      sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-	  }
- </script>
-<script src="script.js"></script>
 </body>
+
 </html>

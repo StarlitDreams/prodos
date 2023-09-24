@@ -32,7 +32,7 @@ def get_channel_statistics(youtube, channel_id):
     )
     return data
      
-channel_statistics = get_channel_statistics(youtube, channel_id)
+''' channel_statistics = get_channel_statistics(youtube, channel_id)
 
 # Create a DataFrame from the dictionary
 channel_data = pd.DataFrame([channel_statistics])
@@ -44,7 +44,7 @@ channel_data = channel_data.drop(columns=['description', 'country'])
 channel_data['Subscribers'] = pd.to_numeric(channel_data['Subscribers'])
 channel_data['Views'] = pd.to_numeric(channel_data['Views'])
 channel_data['Total_Videos'] = pd.to_numeric(channel_data['Total_Videos'])
-
+ '''
 
 
 """
@@ -82,8 +82,8 @@ def get_channel_videos(youtube, playlist_id):
     return videos
 
 
-video_ids = get_channel_videos(youtube, channel_data['playlist_id'][0])
-
+''' video_ids = get_channel_videos(youtube, channel_data['playlist_id'][0])
+ '''
 
  
 def get_video_details(youtube, video_ids):
@@ -110,7 +110,7 @@ def get_video_details(youtube, video_ids):
 
 
 
-video_details = get_video_details(youtube,video_ids)
+''' video_details = get_video_details(youtube,video_ids)
 video_data = pd.DataFrame(video_details)
 video_data['publishedAt'] = pd.to_datetime(video_data['publishedAt'])
 video_data['viewCount'] = pd.to_numeric(video_data['viewCount'])
@@ -127,8 +127,8 @@ top_10 = video_data.sort_values(by='viewCount', ascending=False).head(10)
 video_data['Month']=pd.to_datetime(video_data['publishedAt']).dt.strftime('%b') 
 
 videos_per_month = video_data.groupby('Month', as_index=False).size()
-sort_order = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+sort_order = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] '''
 
 # Create the bar plot
 #ax2 = sns.barplot(x='Month', y='size', data=videos_per_month, order=sort_order)
-#plt.show()
+# plt.show()

@@ -130,3 +130,9 @@ chat = openai.ChatCompletion.create(
 # Get the generated reply from ChatGPT
 reply = chat.choices[0].message.content
 print(reply)
+
+
+
+#write the reply into a text file
+with open('reply.txt', 'w') as f:
+    f.write(reply)
